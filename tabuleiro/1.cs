@@ -1,0 +1,4 @@
+namespace tabuleiro{
+    class a{
+    }
+}

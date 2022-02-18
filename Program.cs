@@ -5,7 +5,7 @@ namespace xadrez_console{
     class Program{
         static void Main(){
             
-            Posicao A = new Posicao(2,3);
+            Tabuleiro A = new Tabuleiro(8,8);
 
             System.Console.WriteLine(A);
         }
