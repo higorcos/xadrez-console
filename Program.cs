@@ -6,31 +6,36 @@ namespace xadrez_console
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] arg)
         {
-
-            try
-            {
+ 
+     try{
                 PartidaDeXadrez partida = new PartidaDeXadrez();
-                while (!partida.terminada)
-                {
-                    Console.Clear();
+                while (!partida.terminada){
+                     Console.Clear();
                     Tela.imprimeTabuleiro(partida.tab);
-                    Console.WriteLine("Origem do ataque:");
+                     
+                   
+                     Console.WriteLine("Origem do ataque:");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                    //movimento
+                     Console.Clear();
+                    Tela.imprimeTabuleiro(partida.tab,posicoesPossiveis);
+
+
                     Console.WriteLine("Destino do ataque:");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                    partida.executarMovimento(origem,destino);
+                    partida.executarMovimento(origem,destino);   
+                     }
+     }catch(TabuleiroException e){
+         System.Console.WriteLine(e);
+     }
+           
 
-                }
-            }
-            catch (TabuleiroException E)
-            {
-                System.Console.WriteLine(E.Message);
-            }
-
-
+ 
         }
     }
 }
